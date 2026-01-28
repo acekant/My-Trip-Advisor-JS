@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
-import { Plus, Map, Compass } from "lucide-react"
+import { Plus, Map as MapIcon, Compass } from "lucide-react"
 
 import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
@@ -94,7 +94,7 @@ export default async function DashboardPage() {
                         </p>
                         <Button asChild size="lg" className="rounded-full">
                             <Link href="/create">
-                                <Map className="w-4 h-4 mr-2" />
+                                <MapIcon className="w-4 h-4 mr-2" />
                                 Create Your First Trip
                             </Link>
                         </Button>

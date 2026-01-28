@@ -108,14 +108,20 @@ export function ItineraryView({ itinerary, data, imageUrl, photographer, photogr
                 {/* Photo Credit */}
                 {photographer && (
                     <div className="absolute top-6 right-6 z-10">
-                        <a
-                            href={photographerUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs text-white/60 hover:text-white/80 transition-colors"
-                        >
-                            Photo by {photographer}
-                        </a>
+                        {photographerUrl ? (
+                            <a
+                                href={photographerUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs text-white/60 hover:text-white/80 transition-colors"
+                            >
+                                Photo by {photographer}
+                            </a>
+                        ) : (
+                            <span className="text-xs text-white/60">
+                                Photo by {photographer}
+                            </span>
+                        )}
                     </div>
                 )}
 
