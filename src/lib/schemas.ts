@@ -1,48 +1,51 @@
 import { z } from "zod"
 
-export const DIETARY_OPTIONS = [
-    "Vegetarian",
-    "Vegan",
-    "Gluten-Free",
-    "Halal",
-    "Kosher",
-    "Lactose-Free",
-    "Nut-Free",
-] as const
-
-export const ACCESSIBILITY_OPTIONS = [
-    "Wheelchair Accessible",
-    "Limited Mobility",
-    "Visual Impairment",
-    "Hearing Impairment",
-    "Service Animal",
-] as const
-
-export const INTEREST_OPTIONS = [
-    "History & Culture",
-    "Art & Museums",
-    "Nature & Outdoors",
-    "Nightlife & Entertainment",
-    "Shopping",
-    "Food & Culinary",
-    "Adventure & Sports",
-    "Photography",
-    "Architecture",
-    "Local Experiences",
-] as const
-
+// Itinerary Schema
 export const itinerarySchema = z.object({
-    destination: z.string().min(2, "Destination must be at least 2 characters"),
-    numDays: z.number().min(1).max(30, "Trip duration must be between 1 and 30 days"),
-    budget: z.enum(["Budget-Friendly", "Moderate", "Luxury", "No Limit"]),
-    ageGroups: z.array(z.enum(["Children", "Teens", "Adults", "Seniors"])).min(1, "Select at least one age group"),
-    partySize: z.number().min(1).max(20, "Party size must be between 1 and 20"),
-    activityLevel: z.enum(["Relaxed", "Moderate", "Active", "Very Active"]),
-    // New preference fields
-    dietaryRestrictions: z.array(z.string()).default([]),
-    accessibilityNeeds: z.array(z.string()).default([]),
-    interests: z.array(z.string()).default([]),
+  destination: z.string().min(1, "Destination is required"),
+  numDays: z.number().min(1).max(30),
+  budget: z.enum(["Budget-Friendly", "Moderate", "Luxury", "No Limit"]),
+  ageGroups: z.array(z.enum(["Children", "Teens", "Adults", "Seniors"])).min(1, "Select at least one age group"),
+  partySize: z.number().min(1, "Party size must be at least 1"),
+  activityLevel: z.enum(["Relaxed", "Moderate", "Active", "Very Active"]),
+  dietaryRestrictions: z.array(z.string()),
+  accessibilityNeeds: z.array(z.string()),
+  interests: z.array(z.string()),
 })
 
 export type ItineraryInput = z.infer<typeof itinerarySchema>
 
+// Options
+export const DIETARY_OPTIONS = [
+  "Vegetarian",
+  "Vegan",
+  "Halal",
+  "Kosher",
+  "Gluten-Free",
+  "Dairy-Free",
+  "Nut Allergy",
+  "Pescatarian"
+] as const
+
+export const ACCESSIBILITY_OPTIONS = [
+  "Wheelchair Access",
+  "Hearing Assistance",
+  "Visual Assistance",
+  "Mobility Support",
+  "Elevator Required"
+] as const
+
+export const INTEREST_OPTIONS = [
+  "Culture",
+  "Food",
+  "Adventure",
+  "Nature",
+  "Shopping",
+  "Nightlife",
+  "History",
+  "Art",
+  "Photography",
+  "Sports",
+  "Relaxation",
+  "Wildlife"
+] as const
