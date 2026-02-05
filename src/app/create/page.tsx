@@ -470,7 +470,7 @@ export default function CreateItineraryPage() {
                                                 <p className="label mb-3">Interests</p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {INTEREST_OPTIONS.map((interest) => {
-                                                        const current = form.watch("interests")
+                                                        const current = form.watch("interests") ?? []
                                                         const isSelected = current.includes(interest)
                                                         return (
                                                             <button
@@ -502,7 +502,7 @@ export default function CreateItineraryPage() {
                                                 <p className="label mb-3">Dietary Needs</p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {DIETARY_OPTIONS.map((diet) => {
-                                                        const current = form.watch("dietaryRestrictions")
+                                                        const current = form.watch("dietaryRestrictions") ?? []
                                                         const isSelected = current.includes(diet)
                                                         return (
                                                             <button
@@ -534,7 +534,7 @@ export default function CreateItineraryPage() {
                                                 <p className="label mb-3">Accessibility</p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {ACCESSIBILITY_OPTIONS.map((need) => {
-                                                        const current = form.watch("accessibilityNeeds")
+                                                        const current = form.watch("accessibilityNeeds") ?? []
                                                         const isSelected = current.includes(need)
                                                         return (
                                                             <button
